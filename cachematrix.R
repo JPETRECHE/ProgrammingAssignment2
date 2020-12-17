@@ -7,10 +7,15 @@
 ##      4. get the value of the inverse matrix
 
 makeCacheMatrix <- function(x = matrix()) {
-        if(dim(x)[1]!=dim(x)[2] || min(dim(x))<2) { 
+        ## Create the "special" matrix from x
+
+        ## Checking if x is a square matrix with dimensions greater than 1 x 1
+        if(dim(x)[1] != dim(x)[2] || min(dim(x)) < 2) { 
                 print("not square or number of rows (or columns) less than 2")
                 return()
         }
+        ##
+        
         m <-NULL
         set <- function(y) {
                 x <<- y
@@ -31,6 +36,7 @@ makeCacheMatrix <- function(x = matrix()) {
 ## it in the cache via the setinv function.
 
 cacheSolve <- function(x, ...) {
+        ## Return a matrix that is the inverse of 'x'       
         m <- x$getinv()
         if(!is.null(m)) {
                 message("getting cached data")
